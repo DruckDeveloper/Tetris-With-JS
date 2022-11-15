@@ -1,5 +1,5 @@
 /*
-This nested array contains the different tetris shapes, where 1 represents a squeare of the shape and the 0 represents a empty space 
+This nested array contains the different tetris shapes, where a number greater than zero represents a squeare of the shape, it will allow us to assign a color to the shape, and the 0 represents a empty space 
 */
 const SHAPES = [
     [], 
