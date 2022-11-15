@@ -64,3 +64,32 @@ const COLORS = [
     "#10FF01",
     "F000FF"
 ]
+
+
+
+//    GAME MODEL 
+
+class GameModel{
+    constructor(ctx){
+        // Context to build the game on the screen with the canvas
+        this.ctx = ctx;
+        // Just one piece falling at time so this call that piece
+        this.fallingPiece = null ;
+        // The grid with zeros user as the structure of the code
+        this.grid = this.makeStartingGrid()
+    }
+
+    makeStartingGrid(){
+        // The grid starts with an empty array
+        let grid = []
+        // Then the array create other arrays with the number of rows
+        for(var i = 0 ; i < ROWS ; i++){
+            grid.push([]);
+            // and in each of this arrays we create zero values as the number of columns
+            for(var j=0 ; j < COLS ; i++){
+                grid[grid.length-1].push(0);
+            }
+        }
+        return grid;
+    }
+}
