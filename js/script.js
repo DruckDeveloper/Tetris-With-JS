@@ -11,3 +11,16 @@ const ROWS = 20;
 const COLS = 10;
 // Score given to the gamer for each complete row realized
 const SCORE_WORTH = 10;
+
+
+// Array with all the colors used in the shapes being the first one an empty space (0) black color
+const COLORS = [
+    "#000000",
+    "#FF0000",
+    "#00FF00",
+    "#0000FF",
+    "#FFFF00",
+    "#00FFFF",
+    "#10FF01",
+    "F000FF"
+]
