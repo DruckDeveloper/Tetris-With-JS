@@ -12,7 +12,7 @@ const COLS = 10;
 const SCORE_WORTH = 10;
 
 /*
-This nested array contains the different tetris shapes, where 1 represents a squeare of the shape and the 0 represents a empty space 
+This nested array contains the different tetris shapes, where a number greater than zero represents a squeare of the shape, it will allow us to assign a color to the shape, and the 0 represents a empty space 
 */
 const SHAPES = [
     [], 
@@ -53,6 +53,7 @@ const SHAPES = [
     ]
 ]
 
+<<<<<<< HEAD
 // Array with all the colors used in the shapes being the first one an empty space (0) black color
 const COLORS = [
     "#000000",
@@ -64,3 +65,29 @@ const COLORS = [
     "#10FF01",
     "F000FF"
 ]
+=======
+/*
+this class piece made the pieces of the tetris
+*/
+class Piece {
+    constructor(shape, ctx) {
+        this.shape = shape 
+        this.ctx = ctx 
+        this.y = 0 
+        this.x = Math.floor(COLS / 2)
+    }
+    //this method build a piece on the board 
+    renderPiece() {
+        this.shape.map((row, i) => {
+            row.map((cell, j) => {
+                //if a frame of the shape is greather than zero it will be fil with the color array 
+                if (cell > 0) {
+                    this.ctx.fillStyle = COLORS[cell] 
+                    //draw the piece and place it 
+                    this.ctx.fillRect(this.x + j, this.y + i, 1, 1)
+                }
+            })
+        })
+    }
+}
+>>>>>>> 8b9cbd1d3dc937dad42ec17b1983c312c3dcec00
