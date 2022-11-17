@@ -270,6 +270,32 @@ let newGameState = () => {
     }
 }
 
+//This method check if a row was complete 
+const fullSend = () => {
+    const allFilled = (row) => {
+        for (let x of row) {
+            if (x === 0) {
+                return false
+            }
+        }
+        //The row will ondly delated when retur true 
+        return true
+    }
+
+    for (let i = 0; i < model.grid.length; i++) {
+        if (allFilled(model.grid[i])) {
+            //increment the player score when a row is completed and 
+            score += SCORE_WORTH 
+            model.grid.splice(i, 1) 
+            //leaves the row at 0 
+            model.grid.unshift([0,0,0,0,0,0,0,0,0,0])
+        }
+    }
+    //update the player's score on the screen 
+    scoreboard.innerHTML = "Score: " + String(score)
+}
+
+
 //Game event listener who asigned a GameModel method to eachone
 document.addEventListener("keydown", (e) => {
     e.preventDefault() 
