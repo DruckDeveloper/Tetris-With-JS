@@ -53,7 +53,6 @@ const SHAPES = [
     ]
 ]
 
-<<<<<<< HEAD
 // Array with all the colors used in the shapes being the first one an empty space (0) black color
 const COLORS = [
     "#000000",
@@ -65,8 +64,6 @@ const COLORS = [
     "#10FF01",
     "F000FF"
 ]
-<<<<<<< HEAD
-
 
 
 //    GAME MODEL 
@@ -95,8 +92,6 @@ class GameModel{
         return grid;
     }
 }
-=======
-=======
 /*
 this class piece made the pieces of the tetris
 */
@@ -121,5 +116,7 @@ class Piece {
         })
     }
 }
->>>>>>> 8b9cbd1d3dc937dad42ec17b1983c312c3dcec00
->>>>>>> druck_dev
+
+
+
+
