@@ -64,8 +64,6 @@ const COLORS = [
     "#10FF01",
     "F000FF"
 ]
-<<<<<<< HEAD
-=======
 
 
 //    GAME MODEL 
@@ -139,7 +137,6 @@ class GameModel{
 
 }
 
->>>>>>> dev
 /*
 this class piece made the pieces of the tetris
 */
@@ -164,7 +161,3 @@ class Piece {
         })
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
