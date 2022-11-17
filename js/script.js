@@ -187,6 +187,26 @@ class GameModel{
         }
         this.renderGameState()
     }
+
+    //This method change the direction of the shape when a shape is falling and the user needs to ratate it 
+    rotate() {
+        if (this.fallingPiece !== null) {
+            let shape = [...this.fallingPiece.shape.map((row) => [...row])]
+            // this loop changes the coordinates of the pieces in the matrix when it is rotating
+            for (let y = 0; y < shape.length; ++y) {
+                for (let x = 0; x < y; ++x) {
+                    [shape[x][y], shape[y][x]] = 
+                    [shape[y][x], shape[x][y]]
+                }
+            }
+            // reverse order of rows while it doesn't collide with anything
+            shape.forEach((row => row.reverse()))
+            if (!this.collision(this.fallingPiece.x, this.fallingPiece.y, shape)) {
+                this.fallingPiece.shape = shape
+            }
+        }
+        this.renderGameState()
+    }
 }
 /*
 this class piece made the pieces of the tetris
