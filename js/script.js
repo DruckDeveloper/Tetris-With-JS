@@ -116,7 +116,7 @@ class GameModel{
         return false
     }
     /*
-    este metodo modifica el grid para dibujar la pieza una vez que esta cae y se coloca en el tablero 
+    this method modifies the grid to draw the piece once it falls and is placed on the board
     */
     renderGameState() {
         for (let i = 0; i < this.grid.length; i++) {
@@ -165,7 +165,28 @@ class GameModel{
         }
         this.renderGameState()
     }
+    // This method allow the piece move to left or right
+    move(right) {
+        if (this.fallingPiece === null) {
+            return
+        }
 
+        let x = this.fallingPiece.x 
+        let y = this.fallingPiece.y 
+        // If the key value is right 
+        if (right) {
+            // move right adding a x + value
+            if (!this.collision(x + 1, y)) {
+                this.fallingPiece.x += 1
+            }
+        } else {
+            // move left substracting a x - value
+            if (!this.collision(x - 1, y)) {
+                this.fallingPiece.x -= 1
+            }
+        }
+        this.renderGameState()
+    }
 }
 
 /*
