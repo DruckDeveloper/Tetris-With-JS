@@ -1,7 +1,7 @@
 //  IMPORTANT CONST THAT WILL BE USED ALONG THE CODE
 
 // The const infite while loope to make the game run
-const GAME_CLOCK = 1000;
+const GAME_CLOCK = 1000 ;
 // THE WIDE OF EACH BLOCK IN THE GAME
 const BLOCK_SIDE_LENGTH = 30;
 
@@ -50,7 +50,7 @@ const SHAPES = [
         [7,7,0],
         [0,7,7],
         [0,0,0],
-    ]
+    ],
 ]
 
 // Array with all the colors used in the shapes being the first one an empty space (0) black color
@@ -75,18 +75,18 @@ class GameModel{
         // Just one piece falling at time so this call that piece
         this.fallingPiece = null ;
         // The grid with zeros user as the structure of the code
-        this.grid = this.makeStartingGrid()
+        this.grid = this.makeStartingGrid();
     }
 
-    makeStartingGrid(){
+    makeStartingGrid() {
         // The grid starts with an empty array
         let grid = []
         // Then the array create other arrays with the number of rows
-        for(var i = 0 ; i < ROWS ; i++){
+        for (var i = 0; i < ROWS; i++) {
             grid.push([]);
             // and in each of this arrays we create zero values as the number of columns
-            for(var j=0 ; j < COLS ; i++){
-                grid[grid.length-1].push(0);
+            for (var j = 0; j < COLS; j++) {
+                grid[grid.length - 1].push(0);
             }
         }
         return grid;
@@ -234,5 +234,21 @@ class Piece {
 }
 
 
+// FUNTIONAL TETRIS JS
+// Call to the HTML items
+let canvas = document.getElementById("game-canvas") 
+let scoreboard = document.getElementById("scoreboard") 
+// Canva's context
+let ctx = canvas.getContext("2d") 
+// Scale of the context (30,30)
+ctx.scale(BLOCK_SIDE_LENGTH, BLOCK_SIDE_LENGTH) 
+// A new instance created by the class GameModel
+let model = new GameModel(ctx)
+// Score meditor
+let score = 0 
 
+// Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
+setInterval(() => {
+    newGameState()
+}, GAME_CLOCK); 
 
