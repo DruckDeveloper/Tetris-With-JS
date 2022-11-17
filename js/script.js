@@ -62,7 +62,7 @@ const COLORS = [
     "#FFFF00",
     "#00FFFF",
     "#10FF01",
-    "F000FF"
+    "#F000FF"
 ]
 
 
@@ -156,6 +156,7 @@ class GameModel{
 
             // check game over if the follaing piece is in the position y: 0 and in the line 1 on the board
             if (this.fallingPiece.y === 0) {
+                aduioPlayerLoss.play()
                 alert("Game over!") 
                 this.grid = this.makeStartingGrid()
             }
@@ -246,6 +247,13 @@ ctx.scale(BLOCK_SIDE_LENGTH, BLOCK_SIDE_LENGTH)
 let model = new GameModel(ctx)
 // Score meditor
 let score = 0 
+//this object import the line score sound
+let audioLineSend = new Audio('src/lineSend.wav', 'volume: 0.1');
+audioLineSend.volume = 0.2; 
+let audioPlayerMove = new Audio('src/playerMoves.wav')
+audioPlayerMove.volume = 0.2; 
+let aduioPlayerLoss = new Audio('src/loss.wav'); 
+aduioPlayerLoss.volume = 0.2; 
 
 // Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
 setInterval(() => {
@@ -279,6 +287,7 @@ const fullSend = () => {
             }
         }
         //The row will ondly delated when retur true 
+        audioLineSend.play();
         return true
     }
 
@@ -302,18 +311,22 @@ document.addEventListener("keydown", (e) => {
     switch(e.key) {
         //W = ROTATE
         case "w":
+            audioPlayerMove.play();
             model.rotate() 
             break 
         //D = MOVE RIGHT
         case "d":
+            audioPlayerMove.play();
             model.move(true) 
             break 
         //S = MOVE DOWN (USING THE MOVEDOWN FUNCTION TWICE EACHTIME WHEN IS PRESS THE S KEY)
-        case "s": 
+        case "s":
+            audioPlayerMove.play(); 
             model.moveDown() 
             break 
         //A = MOVE LEFT
         case "a":
+            audioPlayerMove.play();
             model.move(false) 
             break
     }
