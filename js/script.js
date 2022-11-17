@@ -64,8 +64,6 @@ const COLORS = [
     "#10FF01",
     "F000FF"
 ]
-<<<<<<< HEAD
-=======
 
 
 //    GAME MODEL 
@@ -137,9 +135,39 @@ class GameModel{
         }
     }
 
+    //this method renders the piece as it falls
+    moveDown() {
+        if (this.fallingPiece === null) {
+            this.renderGameState() 
+            return
+        } else if (this.collision(this.fallingPiece.x, this.fallingPiece.y + 1)) {
+            const shape = this.fallingPiece.shape 
+            const x = this.fallingPiece.x 
+            const y = this.fallingPiece.y 
+            shape.map((row, i) => {
+                row.map((cell, j) => {
+                    let p = x + j 
+                    let q = y + i 
+                    if (p >= 0 && p < COLS && q < ROWS && cell > 0) {
+                        this.grid[q][p] = shape[i][j]
+                    }
+                })
+            })
+
+            // check game over if the follaing piece is in the position y: 0 and in the line 1 on the board
+            if (this.fallingPiece.y === 0) {
+                alert("Game over!") 
+                this.grid = this.makeStartingGrid()
+            }
+            this.fallingPiece = null
+        } else {
+            this.fallingPiece.y += 1
+        }
+        this.renderGameState()
+    }
+
 }
 
->>>>>>> dev
 /*
 this class piece made the pieces of the tetris
 */
@@ -164,7 +192,4 @@ class Piece {
         })
     }
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
