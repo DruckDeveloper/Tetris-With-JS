@@ -252,3 +252,43 @@ setInterval(() => {
     newGameState()
 }, GAME_CLOCK); 
 
+
+// Calling the fullSend funtion who is in charge of send the new pieces when the older is positioned on the boardgame
+let newGameState = () => {
+    fullSend() 
+    // If is not a piece falling, this function is executed
+    if (model.fallingPiece === null) {
+         // Random variable
+        const rand = Math.round(Math.random() * 6) + 1
+        // Searcher of piece variable in the array SHAPES
+        const newPiece = new Piece(SHAPES[rand], ctx) 
+         // Now the fallingPiece variable is the newPiece choosen by the variable on the top and its moving down
+        model.fallingPiece = newPiece 
+        model.moveDown()
+    } else {
+        model.moveDown()
+    }
+}
+
+//Game event listener who asigned a GameModel method to eachone
+document.addEventListener("keydown", (e) => {
+    e.preventDefault() 
+    switch(e.key) {
+        //W = ROTATE
+        case "w":
+            model.rotate() 
+            break 
+        //D = MOVE RIGHT
+        case "d":
+            model.move(true) 
+            break 
+        //S = MOVE DOWN (USING THE MOVEDOWN FUNCTION TWICE EACHTIME WHEN IS PRESS THE S KEY)
+        case "s": 
+            model.moveDown() 
+            break 
+        //A = MOVE LEFT
+        case "a":
+            model.move(false) 
+            break
+    }
+})
