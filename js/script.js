@@ -247,6 +247,7 @@ class Piece {
 // Call to the HTML items
 let canvas = document.getElementById("game-canvas") 
 let scoreboard = document.getElementById("scoreboard") 
+let arriba = document.getElementById('botonprueba')
 // Canva's context
 let ctx = canvas.getContext("2d") 
 // Scale of the context (30,30)
@@ -267,6 +268,10 @@ audioTetrisGame.volume = 0.1;
 let audioPieceLocated = new Audio('src/pieceLocated.mp3')
 audioTetrisGame.volume = 0.1; 
 
+let moveLeft = document.getElementById('moveLeft')
+let moveRight = document.getAnimations('moveRight')
+let moveDown = document.getElementById('moveDown')
+let moveRotate = document.getElementById('moveRotate')
 
 
 // Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
@@ -351,3 +356,22 @@ document.addEventListener("keydown", (e) => {
 
 
 
+moveLeft.onclick = function(e){
+    audioTetrisGame.play();
+    model.move(false)
+}
+moveRight.onclick = function(e){
+    audioTetrisGame.play();
+    model.move(true)
+}
+
+
+moveRotate.onclick = function(e){
+    audioTetrisGame.play();
+    model.rotate()
+}
+
+moveDown.onclick = function(e){
+    audioTetrisGame.play();
+    model.moveDown()
+}

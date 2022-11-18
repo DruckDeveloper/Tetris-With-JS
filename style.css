@@ -1,7 +1,15 @@
-body{
-    width: 100%;
-    text-align: center;
+.game{
+   display: flex;
+   justify-content: center;
+   margin: auto;
     
 }
+.aside{
+    height: 600px;
+    box-sizing: border-box;
+    width: 20%;
+    border: 8px solid black;
+}
 #game-canvas{
-   margin:auto;}
+    margin:auto;
+}
