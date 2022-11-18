@@ -254,6 +254,8 @@ let audioPlayerMove = new Audio('src/playerMoves.wav')
 audioPlayerMove.volume = 0.2; 
 let aduioPlayerLoss = new Audio('src/loss.wav'); 
 aduioPlayerLoss.volume = 0.2; 
+let audioTetrisGame = new Audio('src/tetrisSong.mp3')
+audioTetrisGame.volume = 0.3; 
 
 // Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
 setInterval(() => {
