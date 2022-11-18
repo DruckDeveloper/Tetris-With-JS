@@ -61,8 +61,8 @@ const COLORS = [
     "#0000FF",
     "#FFFF00",
     "#00FFFF",
-    "#10FF01",
-    "F000FF"
+    "#F0F0F9",
+    "#F000FF"
 ]
 
 
