@@ -88,8 +88,10 @@ class GameModel{
             for (var j = 0; j < COLS; j++) {
                 grid[grid.length - 1].push(0);
             }
+            
         }
         return grid;
+        
     }
 
     /*This method compares the positions of the pieces located on the board and compares them with the coordinates of the newly generated piece.*/
@@ -125,6 +127,10 @@ class GameModel{
                 let cell = this.grid[i][j] 
                 this.ctx.fillStyle = COLORS[cell] 
                 this.ctx.fillRect(j, i, 1, 1)
+                
+            }
+            if(this.fallingPiece === null){
+                audioPieceLocated.play();
             }
         }
         /*
@@ -156,7 +162,10 @@ class GameModel{
 
             // check game over if the follaing piece is in the position y: 0 and in the line 1 on the board
             if (this.fallingPiece.y === 0) {
-                alert("Game over!") 
+                audioTetrisGame.pause();
+                aduioPlayerLoss.play()
+                alert("Game over!")
+                audioTetrisGame.play();
                 this.grid = this.makeStartingGrid()
             }
             this.fallingPiece = null
@@ -246,11 +255,24 @@ ctx.scale(BLOCK_SIDE_LENGTH, BLOCK_SIDE_LENGTH)
 let model = new GameModel(ctx)
 // Score meditor
 let score = 0 
+//this object import the line score sound
+let audioLineSend = new Audio('src/lineSend.mp3');
+audioLineSend.volume = 0.2; 
+let audioPlayerMove = new Audio('src/playerMoves.wav')
+audioPlayerMove.volume = 0.2; 
+let aduioPlayerLoss = new Audio('src/loss.wav'); 
+aduioPlayerLoss.volume = 0.2; 
+let audioTetrisGame = new Audio('src/tetrisSong.mp3')
+audioTetrisGame.volume = 0.1; 
+let audioPieceLocated = new Audio('src/pieceLocated.mp3')
+audioTetrisGame.volume = 0.1; 
+
+
 
 // Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
 setInterval(() => {
-    newGameState()
-}, GAME_CLOCK); 
+    newGameState()   
+}, GAME_CLOCK ) ; 
 
 
 // Calling the fullSend funtion who is in charge of send the new pieces when the older is positioned on the boardgame
@@ -258,6 +280,7 @@ let newGameState = () => {
     fullSend() 
     // If is not a piece falling, this function is executed
     if (model.fallingPiece === null) {
+    
          // Random variable
         const rand = Math.round(Math.random() * 6) + 1
         // Searcher of piece variable in the array SHAPES
@@ -265,6 +288,7 @@ let newGameState = () => {
          // Now the fallingPiece variable is the newPiece choosen by the variable on the top and its moving down
         model.fallingPiece = newPiece 
         model.moveDown()
+        
     } else {
         model.moveDown()
     }
@@ -279,6 +303,7 @@ const fullSend = () => {
             }
         }
         //The row will ondly delated when retur true 
+        audioLineSend.play();
         return true
     }
 
@@ -302,19 +327,27 @@ document.addEventListener("keydown", (e) => {
     switch(e.key) {
         //W = ROTATE
         case "w":
+            audioTetrisGame.play();
+            audioPlayerMove.play();
             model.rotate() 
             break 
         //D = MOVE RIGHT
         case "d":
+            audioTetrisGame.play();
             model.move(true) 
             break 
         //S = MOVE DOWN (USING THE MOVEDOWN FUNCTION TWICE EACHTIME WHEN IS PRESS THE S KEY)
-        case "s": 
+        case "s":
+            audioTetrisGame.play();
             model.moveDown() 
             break 
         //A = MOVE LEFT
         case "a":
+            audioTetrisGame.play();
             model.move(false) 
             break
     }
 })
+
+
+
