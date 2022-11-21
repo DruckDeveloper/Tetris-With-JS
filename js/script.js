@@ -11,6 +11,7 @@ const COLS = 10;
 // Score given to the gamer for each complete row realized
 const SCORE_WORTH = 10;
 
+
 /*
 This nested array contains the different tetris shapes, where a number greater than zero represents a squeare of the shape, it will allow us to assign a color to the shape, and the 0 represents a empty space 
 */
@@ -274,14 +275,16 @@ let moveDown = document.getElementById('moveDown')
 let moveRotate = document.getElementById('moveRotate')
 
 let userLines = document.getElementById('userSendLines')
-let userLevel = document.getElementById('userLevel')
-let levelCounter = 0
-let lineCounter = 0 
+let lineCounter = 0
+
+
 
 // Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
+
 setInterval(() => {
     newGameState()
 }, GAME_CLOCK ) ; 
+
 
 
 // Calling the fullSend funtion who is in charge of send the new pieces when the older is positioned on the boardgame
@@ -320,7 +323,7 @@ const fullSend = () => {
         if (allFilled(model.grid[i])) {
             //increment the player score when a row is completed and 
             score += SCORE_WORTH 
-            lineCounter++
+            lineCounter+=1
             userLines.innerHTML = String(lineCounter)
             model.grid.splice(i, 1) 
             //leaves the row at 0 
@@ -329,8 +332,9 @@ const fullSend = () => {
     }
     //update the player's score on the screen 
     scoreboard.innerHTML = "Score: " + String(score)
-
 }
+
+
 
 
 //Game event listener who asigned a GameModel method to eachone
@@ -361,7 +365,6 @@ document.addEventListener("keydown", (e) => {
     }
 })
 
-
 //Events for smartphone buttons
 moveLeft.onclick = function(e){
     audioTetrisGame.play();
@@ -379,3 +382,6 @@ moveDown.onclick = function(e){
     audioTetrisGame.play();
     model.moveDown()
 }
+
+
+
