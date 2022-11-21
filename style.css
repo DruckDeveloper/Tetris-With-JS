@@ -76,6 +76,9 @@ body{
     display: flex;
     justify-content: center;
 }
+.sco{
+    display: block;
+}
 .sco h2{
     color: white;
     box-shadow: 0 0 50px rgb(68, 171, 255);
