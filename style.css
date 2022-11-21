@@ -102,9 +102,15 @@ body{
     justify-content: space-between;
 }
 .boton{
+    display: block;
     padding: 20px;
     font-weight: 900;
     background-color: rgb(75, 75, 75, 0.5);
     color: white;
     border-radius:25px ;
+}
+@media (min-width: 769px){
+    .boton{
+        display: none;
+    }
 }
