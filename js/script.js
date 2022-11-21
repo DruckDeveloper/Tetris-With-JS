@@ -163,7 +163,7 @@ class GameModel{
             // check game over if the follaing piece is in the position y: 0 and in the line 1 on the board
             if (this.fallingPiece.y === 0) {
                 audioTetrisGame.pause();
-                aduioPlayerLoss.play()
+                audioPlayerLoss.play()
                 alert("Game over!")
                 audioTetrisGame.play();
                 this.grid = this.makeStartingGrid()
@@ -202,8 +202,8 @@ class GameModel{
         if (this.fallingPiece !== null) {
             let shape = [...this.fallingPiece.shape.map((row) => [...row])]
             // this loop changes the coordinates of the pieces in the matrix when it is rotating
-            for (let y = 0; y < shape.length; ++y) {
-                for (let x = 0; x < y; ++x) {
+            for (let y = 0; y < shape.length; y++) {
+                for (let x = 0; x < y; x++) {
                     [shape[x][y], shape[y][x]] = 
                     [shape[y][x], shape[x][y]]
                 }
@@ -261,18 +261,20 @@ let audioLineSend = new Audio('src/lineSend.mp3');
 audioLineSend.volume = 0.2; 
 let audioPlayerMove = new Audio('src/playerMoves.wav')
 audioPlayerMove.volume = 0.2; 
-let aduioPlayerLoss = new Audio('src/loss.wav'); 
-aduioPlayerLoss.volume = 0.2; 
+let audioPlayerLoss = new Audio('src/loss.wav'); 
+audioPlayerLoss.volume = 0.2; 
 let audioTetrisGame = new Audio('src/tetrisSong.mp3')
 audioTetrisGame.volume = 0.1; 
 let audioPieceLocated = new Audio('src/pieceLocated.mp3')
 audioTetrisGame.volume = 0.1; 
-
+//buttons for smartphone users 
 let moveLeft = document.getElementById('moveLeft')
 let moveRight = document.getAnimations('moveRight')
 let moveDown = document.getElementById('moveDown')
 let moveRotate = document.getElementById('moveRotate')
 
+let userLines = document.getElementById('userSendLines')
+let userLevel = document.getElementById('userLevel')
 
 // Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
 setInterval(() => {
@@ -307,8 +309,9 @@ const fullSend = () => {
                 return false
             }
         }
-        //The row will ondly delated when retur true 
         audioLineSend.play();
+        
+        //The row will ondly delated when retur true 
         return true
     }
 
@@ -323,6 +326,7 @@ const fullSend = () => {
     }
     //update the player's score on the screen 
     scoreboard.innerHTML = "Score: " + String(score)
+
 }
 
 
@@ -355,7 +359,7 @@ document.addEventListener("keydown", (e) => {
 })
 
 
-
+//Events for smartphone buttons
 moveLeft.onclick = function(e){
     audioTetrisGame.play();
     model.move(false)
@@ -364,13 +368,10 @@ moveRight.onclick = function(e){
     audioTetrisGame.play();
     model.move(true)
 }
-
-
 moveRotate.onclick = function(e){
     audioTetrisGame.play();
     model.rotate()
 }
-
 moveDown.onclick = function(e){
     audioTetrisGame.play();
     model.moveDown()

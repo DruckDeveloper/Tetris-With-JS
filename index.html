@@ -10,12 +10,17 @@
 <body>
     <!--  A canvas created to be modified by the JS archive  -->
     <section class="game">
+        <div class="tetris-logo-container">
+            <img src="src/tetrisLogo.png" alt="tetris logo">
+        </div>
         <div>
-    <canvas id = "game-canvas" width="300" height="600"></canvas>
+            <canvas id = "game-canvas" width="300" height="600"></canvas>
         </div>
         <div class="aside">
-    <h2 id = "scoreboard">Score: 0</h2>
-    </div>
+            <h2 id = "scoreboard">Score: 0</h2>
+            <h2 >Lines: <span id="userSendLines">0</span></h2>
+            <h2>Level: <span id="userLevel">1</span></h2>
+        </div>
     </section>
     <section class="butons">
         <button id="moveLeft" onclick="moveleft();"> ←</button>
@@ -23,11 +28,6 @@
         <button id="moveDown" onclick="moveDown();"> ↓</button>
         <button id="moveRotate" onclick="moveRotate();"> ↷</button>
     </section>
-
-    <!--  This value is going to be modified using a function that will be asigned to show to the users there score -->
-    
-    
-
     <!--  The link to connect this HTML file with the JS file -->
     <script src="js/script.js"></script>
 </body>
