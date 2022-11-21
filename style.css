@@ -1,15 +1,41 @@
+body{
+    background-color: #2A1660;
+
+}
+#game-canvas{
+    box-shadow: 0 0 50px rgb(68, 171, 255);
+    align-self: center;
+}
 .game{
    display: flex;
    justify-content: center;
    margin: auto;
+   background-image: url("img/formas-neon-sobre-fondo-oscuro_23-2148423875.png");
+   background-size:cover ;
+   margin: 15px 0px;
+   padding: 15px 0px;
     
 }
 .aside{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
     height: 600px;
     box-sizing: border-box;
     width: 20%;
     border: 8px solid black;
+   font-family: 'Monda', sans-serif;;
 }
-#game-canvas{
-    margin:auto;
+
+.aside img{
+    width: 75%;
+    margin-top: 10px;
+}
+.aside h2{
+    color: white;
+    box-shadow: 0 0 50px rgb(68, 171, 255);
+}
+.score{
+    font-size: 20px;
 }
