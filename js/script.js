@@ -1,7 +1,7 @@
 //  IMPORTANT CONST THAT WILL BE USED ALONG THE CODE
 
 // The const infite while loope to make the game run
-const GAME_CLOCK = 1000 ;
+let GAME_CLOCK = 1000;
 // THE WIDE OF EACH BLOCK IN THE GAME
 const BLOCK_SIDE_LENGTH = 30;
 
@@ -269,16 +269,18 @@ let audioPieceLocated = new Audio('src/pieceLocated.mp3')
 audioTetrisGame.volume = 0.1; 
 //buttons for smartphone users 
 let moveLeft = document.getElementById('moveLeft')
-let moveRight = document.getAnimations('moveRight')
+let moveRight = document.getElementById('moveRight')
 let moveDown = document.getElementById('moveDown')
 let moveRotate = document.getElementById('moveRotate')
 
 let userLines = document.getElementById('userSendLines')
 let userLevel = document.getElementById('userLevel')
+let levelCounter = 0
+let lineCounter = 0 
 
 // Repeated call to the function newGameState during one second each time, allowing the constant canva's context refreshing
 setInterval(() => {
-    newGameState()   
+    newGameState()
 }, GAME_CLOCK ) ; 
 
 
@@ -310,7 +312,6 @@ const fullSend = () => {
             }
         }
         audioLineSend.play();
-        
         //The row will ondly delated when retur true 
         return true
     }
@@ -319,6 +320,8 @@ const fullSend = () => {
         if (allFilled(model.grid[i])) {
             //increment the player score when a row is completed and 
             score += SCORE_WORTH 
+            lineCounter++
+            userLines.innerHTML = String(lineCounter)
             model.grid.splice(i, 1) 
             //leaves the row at 0 
             model.grid.unshift([0,0,0,0,0,0,0,0,0,0])
