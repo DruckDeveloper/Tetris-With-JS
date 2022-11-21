@@ -7,28 +7,43 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet"> 
-    <title>Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="img/favicon" href="img/favicon.ico"> 
+    <title>TETRIS - PROGRAMATE</title>
 </head>
 <body>
     
     <!--  A canvas created to be modified by the JS archive  -->
+    <div class="up">
+        <img src="img/tetris-logo.png" alt="logo de tetris png">
+    </div>
     <section class="game">
         <div>
     <canvas id = "game-canvas" width="300" height="600"></canvas>
         </div>
         <div class="aside">
             <img src="img/tetris-logo.png" alt="logo de tetris png">
+            <div class="wasd" >
+                <img src="img/6243eac95a980b8fcc5bae97_wasd (1).png" alt="">
+                <p>To move :)</p>
+            </div>
+            
             <h2 id = "scoreboard">Score: <br> <span class="score"> 0</span></h2> 
         </div>
     </section>
     <section class="butons">
-        <button id="moveLeft" onclick="moveleft();"> ←</button>
-        <button id="moveRight" onclick="moveRight();"> →</button>
-        <button id="moveDown" onclick="moveDown();"> ↓</button>
-        <button id="moveRotate" onclick="moveRotate();"> ↷</button>
+        <div class="butons1">
+            <button class="boton" id="moveLeft" > ←</button>
+            <button class="boton" id="moveDown" > ↓</button>
+        </div>
+        <div class="butons2">
+            <button class="boton" id="moveRight" > →</button>
+            <button class="boton" id="moveRotate" > ↷</button>
+        </div>
     </section>
-
+    <div class="sco">
+        <h2 id = "scoreboard">Score:<span class="score"> 0</span></h2> 
+    </div>
     <!--  This value is going to be modified using a function that will be asigned to show to the users there score -->
     
     

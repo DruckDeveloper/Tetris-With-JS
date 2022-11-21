@@ -2,6 +2,10 @@ body{
     background-color: #2A1660;
 
 }
+
+.up{
+    display: none;
+}
 #game-canvas{
     box-shadow: 0 0 50px rgb(68, 171, 255);
     align-self: center;
@@ -32,10 +36,75 @@ body{
     width: 75%;
     margin-top: 10px;
 }
+.wasd{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wasd img{
+    width: 50%;
+}
+.wasd p{
+    color: white;
+    margin-top: -20px;
+}
 .aside h2{
     color: white;
     box-shadow: 0 0 50px rgb(68, 171, 255);
 }
 .score{
     font-size: 20px;
+}
+.boton{
+    display: none;
+}
+.sco{
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    
+.aside{
+    display: none;
+}
+.up img{
+    width: 150px;
+    margin: auto;
+}
+.up{
+    display: flex;
+    justify-content: center;
+}
+.sco h2{
+    color: white;
+    box-shadow: 0 0 50px rgb(68, 171, 255);
+    font-family: 'Monda', sans-serif;;
+}
+}
+.butons{
+    display: flex;
+    width: 87%;
+    justify-content: space-between;
+    position: absolute;
+    top: 500px;
+    margin: 0px 15px;
+}
+.butons1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+.butons2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.boton{
+    padding: 20px;
+    font-weight: 900;
+    background-color: rgb(75, 75, 75, 0.5);
+    color: white;
+    border-radius:25px ;
 }

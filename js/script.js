@@ -269,7 +269,7 @@ let audioPieceLocated = new Audio('src/pieceLocated.mp3')
 audioTetrisGame.volume = 0.1; 
 
 let moveLeft = document.getElementById('moveLeft')
-let moveRight = document.getAnimations('moveRight')
+let moveRight = document.getElementById('moveRight')
 let moveDown = document.getElementById('moveDown')
 let moveRotate = document.getElementById('moveRotate')
 
